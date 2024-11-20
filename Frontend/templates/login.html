@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: 'Pretendard-Regular';
+      }
+
+      /* 아코디언 메뉴 기본적으로 숨김 (오른쪽에서 슬라이드됨) */
+      #accordionMenu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 250px;
+        background-color: black;
+        padding: 1rem;
+        z-index: 30;
+        transform: translateX(100%); /* 처음에 화면 밖에 위치 */
+        transition: transform 0.3s ease-in-out; /* 슬라이드 효과 */
+      }
+
+      /* 메뉴가 열렸을 때 사용하는 클래스 */
+      #accordionMenu.open {
+        transform: translateX(0); /* 오른쪽에서 슬라이드로 보임 */
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header
+      class="bg-white w-full h-16 shadow-md fixed flex items-center px-4 z-10"
+    >
+      <!-- 로고 이미지 -->
+      <img
+        src="/assets/img/logo.svg"
+        alt="Medi-Ray Logo"
+        class="w-32 h-auto cursor-pointer"
+        id="logo"
+      />
+
+      <!-- 햄버거 버튼 -->
+      <!-- <button id="menuToggle" class="ml-auto text-gray-800">
+        <i class="fas fa-bars text-2xl"></i>
+      </button> -->
+    </header>
+
+    <!-- Accordion Menu (Right Sidebar) -->
+    <div id="accordionMenu" class="bg-black text-white p-6">
+      <!-- Close Button -->
+      <button id="closeBtn" class="text-white mb-4 focus:outline-none">
+        <i class="fas fa-times text-xl"></i> Close
+      </button>
+
+      <!-- Accordion Links -->
+      <a href="#" class="py-2 block hover:bg-gray-700 rounded">About Us</a>
+      <a href="#" class="py-2 block hover:bg-gray-700 rounded">DICOM Upload</a>
+      <a href="#" class="py-2 block hover:bg-gray-700 rounded">Diagnosis</a>
+    </div>
+
+    <!-- Main Content -->
+    <div
+      class="pt-20 p-6 flex flex-col justify-center items-center min-h-screen"
+    >
+      <div class="max-w-lg w-full bg-white p-8 shadow-md rounded-lg">
+        <h2 class="text-xl font-bold text-center mb-6">
+          로그인하고 서비스를 이용하세요
+        </h2>
+
+        <!-- 이메일 입력 -->
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700">이메일</label>
+          <input
+            type="email"
+            id="email"
+            class="w-full p-2 border border-gray-300 rounded-lg"
+            placeholder="example@gmail.com"
+          />
+        </div>
+
+        <!-- 비밀번호 입력 -->
+        <div class="mb-4">
+          <label for="password" class="block text-gray-700">비밀번호</label>
+          <input
+            type="password"
+            id="password"
+            class="w-full p-2 border border-gray-300 rounded-lg"
+            placeholder="비밀번호를 입력해주세요"
+          />
+        </div>
+
+        <!-- 로그인 유지 체크박스 및 링크 -->
+        <!--         <div class="flex items-center justify-between mb-4">
+          <div>
+            <input type="checkbox" id="remember" class="mr-2" />
+            <label for="remember" class="text-gray-700">로그인 유지</label>
+          </div>
+          <a href="#" class="text-blue-500 hover:underline"
+            >아이디·비밀번호 찾기</a
+          >
+        </div> -->
+
+        <!-- 로그인 버튼 -->
+        <button
+          type="button"
+          id="loginBtn"
+          class="w-full bg-blue-500 text-white p-2 rounded-lg"
+        >
+          Login
+        </button>
+
+        <!-- 회원가입 링크 -->
+        <div class="text-center mt-4">
+          <span>회원이 아니신가요? </span>
+          <a href="#" id="signupLink" class="text-blue-500 hover:underline"
+            >회원가입</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript for menu toggle and login handling -->
+    <script src="assets/js/login.js"></script>
+  </body>
+</html>

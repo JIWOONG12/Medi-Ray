@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 외부 CSS 파일 -->
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+  </head>
+  <body
+    class="bg-gray-100 font-sans relative"
+    style="font-family: 'Pretendard-Regular'"
+  >
+    <!-- 애니메이션 배경 -->
+    <div id="holder"></div>
+
+    <!-- Header -->
+    <header class="bg-white w-full h-16 shadow-md fixed flex items-center px-4 z-10">
+      <!-- 로고 이미지 -->
+      <img
+        src="/assets/img/logo.svg"
+        alt="Medi-Ray Logo"
+        class="w-32 h-auto cursor-pointer"
+        id="logo"
+      />
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex justify-center items-center w-full min-h-screen pt-20">
+      <div
+        class="max-w-md w-full bg-white p-8 shadow-md rounded-lg relative"
+      >
+        <h2 class="text-2xl font-bold text-center mb-6">Sign Up</h2>
+
+        <form id="signupForm">
+          <!-- 입력 필드 -->
+          <div class="space-y-4">
+            <div>
+              <label for="name" class="block text-gray-700 text-sm">이름</label>
+              <input
+                type="text"
+                id="name"
+                class="w-full p-2 border border-gray-300 rounded"
+                placeholder="이름을 입력해주세요"
+              />
+            </div>
+
+            <div>
+              <label for="phone" class="block text-gray-700 text-sm"
+                >전화번호</label
+              >
+              <input
+                type="text"
+                id="phone"
+                class="w-full p-2 border border-gray-300 rounded"
+                placeholder="전화번호를 입력해주세요"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-gray-700 text-sm"
+                >이메일</label
+              >
+              <input
+                type="email"
+                id="email"
+                class="w-full p-2 border border-gray-300 rounded"
+                placeholder="아이디로 사용할 이메일을 입력해주세요"
+              />
+              <button
+                type="button"
+                id="checkEmailBtn"
+                class="mt-2 w-full p-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+              >
+                Check
+              </button>
+            </div>
+
+            <div>
+              <label for="password" class="block text-gray-700 text-sm"
+                >비밀번호</label
+              >
+              <input
+                type="password"
+                id="password"
+                class="w-full p-2 border border-gray-300 rounded"
+                placeholder="영문, 숫자, 특수문자가 포함된 8-20자"
+              />
+              <span id="password-message" class="text-red-500 text-xs"></span>
+            </div>
+
+            <div>
+              <label for="password-confirm" class="block text-gray-700 text-sm"
+                >비밀번호 확인</label
+              >
+              <input
+                type="password"
+                id="password-confirm"
+                class="w-full p-2 border border-gray-300 rounded"
+                placeholder="비밀번호를 한 번 더 입력해주세요"
+              />
+              <span id="confirm-password-message" class="text-xs"></span> <!-- 색상 변경을 위한 id 유지 -->
+            </div>
+
+            <div>
+              <label for="doctor-code" class="block text-gray-700 text-sm"
+                >의사코드</label
+              >
+              <input
+                type="text"
+                id="doctor-code"
+                class="w-full p-2 border border-gray-300 rounded"
+                placeholder="의사코드를 입력해주세요"
+              />
+              <button
+                type="button"
+                id="checkDoctorCodeBtn"
+                class="mt-2 w-full p-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+              >
+                Check
+              </button>
+            </div>
+
+            <div>
+              <label for="hospital" class="block text-gray-700 text-sm"
+                >의사소속</label
+              >
+              <input
+                type="text"
+                id="hospital"
+                class="w-full p-2 border border-gray-300 rounded"
+                placeholder="본인의 소속을 입력해주세요"
+              />
+            </div>
+          </div>
+
+          <!-- 버튼 -->
+          <div class="mt-6 flex space-x-4">
+            <button
+              type="submit"
+              class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+            >
+              Complete
+            </button>
+            <button
+              type="button"
+              id="cancelBtn"
+              class="w-full bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- JavaScript for handling button clicks -->
+    <script>
+      // 로고 클릭 시 index.html로 이동
+      document.getElementById('logo').addEventListener('click', function () {
+        window.location.href = 'index';
+      });
+
+      // 취소 버튼 클릭 시 이전 페이지로 이동
+      document
+        .getElementById('cancelBtn')
+        .addEventListener('click', function () {
+          window.history.back();
+        });
+    </script>
+
+    <!-- 외부 파도 애니메이션 스크립트 추가 -->
+    <script src="/assets/js/signup.js"></script>
+  </body>
+</html>

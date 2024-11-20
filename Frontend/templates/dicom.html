@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DICOM Upload - Medi-Ray</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body class="bg-white">
+    <!-- Header -->
+    <header
+      class="bg-white w-full h-16 shadow-md fixed top-0 flex items-center px-4 z-50"
+    >
+      <!-- 로고 이미지 -->
+      <img
+        src="/assets/img/logo.svg"
+        alt="Medi-Ray Logo"
+        class="w-32 h-auto cursor-pointer"
+        id="logo"
+      />
+
+      <!-- 햄버거 버튼 -->
+      <button id="menuToggle" class="ml-auto text-gray-800">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </header>
+
+    <!-- Accordion Menu (Right Sidebar) -->
+    <div
+      id="accordionMenu"
+      class="bg-black text-white p-6 transform translate-x-full fixed top-0 right-0 h-full w-64 transition-transform duration-300 z-50"
+    >
+      <!-- Close Button -->
+      <button
+        id="closeBtn"
+        class="absolute top-4 right-4 text-white text-2xl focus:outline-none"
+      >
+        ✕
+      </button>
+
+      <!-- User Info Section -->
+      <div class="flex flex-col items-center justify-center border-b border-gray-700 pb-4 mb-4">
+        <img
+          src="/assets/img/Profile.png"
+          alt="Profile Image"
+          class="w-16 h-16 rounded-full mb-2"
+        />
+        <div id="user-info" class="text-center text-gray-300 text-lg flex flex-col gap-2 items-center">
+          <p>사용자 이름</p>
+          <button class="text-red-500 hover:text-red-600 ml-0">로그아웃</button>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="space-y-2">
+        <a
+          href="about"
+          class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white rounded transition duration-300"
+        >
+          About Us
+        </a>
+        <a
+          href="dicom"
+          class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white rounded transition duration-300"
+        >
+          DICOM Upload
+        </a>
+        <a
+          href="diagnosis"
+          class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white rounded transition duration-300"
+        >
+          Diagnosis
+        </a>
+      </nav>
+    </div>
+
+    <!-- 업로드 컨테이너 -->
+    <div class="upload-container mx-auto mt-24 " style="height: 700px;">
+      <h1 id="dicomTitle" class="text-3xl font-bold mb-4 text-center">
+        DICOM Upload
+      </h1>
+
+      <!-- 파일 업로드 영역 -->
+      <div class="upload-box" id="upload-box">
+        <div id="upload-content">
+          <p>Drag or Drop files here or</p>
+          <button
+            class="mt-4 bg-gray-500 text-white py-2 px-4 rounded"
+            id="selectFilesBtn"
+          >
+            Select files
+          </button>
+        </div>
+        <!-- 다이콤파일(.dcm)만 받도록 설정 -->
+        <input type="file" id="fileInput" class="hidden" accept=".dcm" />
+      </div>
+
+      <!-- 파일 업로드 시 미리보기 -->
+      <div id="preview-container" class="mt-6 hidden preview-container" style="border: none;">
+        <div class="relative">
+          <img id="preview-image" class="preview-image" alt="Image Preview" style="border: none;"/>
+          <div class="flex justify-center items-center gap-2 mt-4">
+            <!-- 전송 버튼 -->
+            <button id="submitBtn" class="bg-blue-500 text-white py-2 px-4 rounded">
+              전송
+            </button>
+            <!-- 닫기 버튼 -->
+            <button
+              id="closePreviewBtn"
+              class="bg-gray-300 text-black py-2 px-4 rounded hover:bg-gray-400"
+            >
+              취소
+            </button>
+          </div>
+        </div>
+        <!-- 설명 문구 -->
+        <p class="text-gray-500 text-sm text-center mt-2
+         mb-4">
+          전송 버튼을 누르면 서버로 전송됩니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- 환자 정보 테이블 -->
+    <div class="patient-info-container mt-8 mb-8 mx-auto">
+      <table class="table-auto w-full border">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border px-4 py-2">환자코드</th>
+            <th class="border px-4 py-2">이름</th>
+            <th class="border px-4 py-2">생년월일</th>
+            <th class="border px-4 py-2">성별</th>
+            <th class="border px-4 py-2">담당의사</th>
+          </tr>
+        </thead>
+        <tbody id="patient-info-body">
+          <!-- JavaScript로 동적 렌더링 -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- JavaScript 추가 -->
+    <script src="/assets/js/dicom.js"></script>
+    <script src="/assets/js/header.js"></script>
+  </body>
+</html>

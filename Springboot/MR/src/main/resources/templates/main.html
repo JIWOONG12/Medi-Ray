@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메인 페이지</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      
+    />
+  </head>
+  <body class="bg-white">
+    <!-- 파도 애니메이션 배경 -->
+    <div id="holder"></div>
+
+    <!-- Header -->
+    <header
+      class="bg-white w-full h-16 shadow-md fixed flex items-center px-4 z-50"
+    >
+      <!-- 로고 이미지 -->
+      <img
+        src="/assets/img/logo.svg"
+        alt="Medi-Ray Logo"
+        class="w-32 h-auto cursor-pointer"
+        id="logo"
+      />
+      <!-- 햄버거 버튼 -->
+      <button id="menuToggle" class="ml-auto text-gray-800">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </header>
+
+    <!-- Accordion Menu (Right Sidebar) -->
+    <div
+      id="accordionMenu"
+      class="bg-black text-white p-6 transform translate-x-full fixed top-0 right-0 h-full w-64 transition-transform duration-300 z-50"
+    >
+      <!-- Close Button -->
+      <button
+        id="closeBtn"
+        class="absolute top-4 right-4 text-white text-2xl focus:outline-none"
+      >
+        ✕
+      </button>
+
+      <!-- User Info Section -->
+	<div class="flex flex-col items-center justify-center border-b border-gray-700 pb-4 mb-4 mt-12">
+	  <img
+	    src="/assets/img/Profile.png"
+	    alt="Profile Image"
+	    class="w-16 h-16 rounded-full mb-2"
+	  />
+	<div id="user-info" class="text-center text-gray-300 text-lg flex flex-col gap-2 items-center">
+	  <p>사용자 이름</p>
+	  <button class="text-red-500 hover:text-red-600 ml-0">로그아웃</button>
+	</div>
+	
+	</div>
+
+
+      <!-- Navigation Links -->
+      <nav class="space-y-2">
+        <a
+          href="about"
+          class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white rounded transition duration-300"
+        >
+          About Us
+        </a>
+        <a
+          href="dicom"
+          class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white rounded transition duration-300"
+        >
+          DICOM Upload
+        </a>
+        <a
+          href="diagnosis"
+          class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white rounded transition duration-300"
+        >
+          Diagnosis
+        </a>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex justify-center items-center h-screen px-4 relative z-10">
+      <!-- Combined Section - Text, Buttons, and Image in One Transparent Box -->
+      <div class="flex bg-white bg-opacity-80 p-8 rounded-lg shadow-lg">
+        <!-- Left Section - Text and Buttons -->
+        <div
+          class="flex flex-col justify-center text-left pr-8 border-r border-gray-300"
+        >
+          <h1 class="text-4xl font-bold mb-4">
+            더 빠르고, 더 정확하게<br />
+            최신의 진단을 돕는<br />
+            <span class="text-5xl mt-3 block">MEDI-RAY</span>
+          </h1>
+          <p class="text-xl text-gray-600 mb-8">
+            버튼을 클릭해서 서비스를 이용하세요
+          </p>
+
+          <!-- Buttons -->
+          <div class="flex space-x-4">
+            <button
+              id="uploadBtn"
+              class="bg-gray-500 text-white py-2 px-6 rounded hover:bg-gray-600 transition duration-300"
+            >
+              Upload
+            </button>
+            <button
+              id="diagnosisBtn"
+              class="bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-600 transition duration-300"
+            >
+              Diagnosis
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Section - Image -->
+        <div class="flex-shrink-0 pl-8">
+          <img
+            src="/assets/img/Dricon.png"
+            alt="Doctor Illustration"
+            class="w-80 h-auto"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/assets/js/header.js"></script>
+    <script src="/assets/js/wave.js"></script>
+    <script>
+      // Upload 버튼 클릭 시 업로드 페이지로 이동
+      document
+        .getElementById('uploadBtn')
+        .addEventListener('click', function () {
+          window.location.href = '/dicom';
+        });
+
+      // Diagnosis 버튼 클릭 시 진단 페이지로 이동
+      document
+        .getElementById('diagnosisBtn')
+        .addEventListener('click', function () {
+          window.location.href = '/diagnosis';
+        });
+
+    </script>
+  </body>
+</html>

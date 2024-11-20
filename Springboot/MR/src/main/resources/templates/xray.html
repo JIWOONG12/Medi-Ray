@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diagnosis - Medi-Ray</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body class="bg-gray-200">
+    <!-- Header -->
+    <header
+      class="bg-white w-full h-16 shadow-md fixed top-0 flex items-center px-4 z-50"
+    >
+      <!-- 로고 이미지 -->
+      <img
+        src="/assets/img/logo.svg"
+        alt="Medi-Ray Logo"
+        class="w-24 md:w-32 h-auto cursor-pointer"
+        id="logo"
+      />
+
+      <!-- 햄버거 버튼 -->
+      <button id="menuToggle" class="ml-auto text-gray-800">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </header>
+
+    <!-- Accordion Menu (Right Sidebar) -->
+    <div
+      id="accordionMenu"
+      class="bg-black text-white p-6 transform translate-x-full fixed top-0 right-0 h-full w-64 transition-transform duration-300 z-50"
+    >
+      <!-- Close Button -->
+      <button
+        id="closeBtn"
+        class="absolute top-4 right-4 text-white text-2xl focus:outline-none"
+      >
+        ✕
+      </button>
+
+      <!-- User Info Section -->
+	<div class="flex flex-col items-center justify-center border-b border-gray-700 pb-4 mb-4 mt-12">
+	  <img
+	    src="/assets/img/Profile.png"
+	    alt="Profile Image"
+	    class="w-16 h-16 rounded-full mb-2"
+	  />
+	<div id="user-info" class="text-center text-gray-300 text-lg flex flex-col gap-2 items-center">
+	  <p>사용자 이름</p>
+	  <button class="text-red-500 hover:text-red-600 ml-0">로그아웃</button>
+	</div>
+	
+	</div>
+
+
+      <!-- Navigation Links -->
+      <nav class="space-y-2">
+        <a
+          href="../about"
+          class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white rounded transition duration-300"
+        >
+          About Us
+        </a>
+        <a
+          href="../dicom"
+          class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white rounded transition duration-300"
+        >
+          DICOM Upload
+        </a>
+        <a
+          href="../diagnosis"
+          class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white rounded transition duration-300"
+        >
+          Diagnosis
+        </a>
+      </nav>
+    </div>
+
+<!-- Main Section -->
+<div class="container mx-auto px-4 md:px-8 mt-24 md:mt-20">
+  <div class="flex flex-col md:flex-row gap-8">
+    <!-- Left Side: Canvas -->
+    <div class="flex-1">
+      <div class="bg-white p-4 md:p-6 rounded-lg shadow-md">
+        <h2 class="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center">
+          Diagnosis
+        </h2>
+        <div
+          class="flex flex-wrap items-center justify-center gap-2 md:gap-4 mb-4 md:mb-6 p-4  rounded-lg"
+        >
+          <!-- Buttons using input and label -->
+          <input type="radio" name="tool" id="brushTool" class="hidden" />
+          <label
+            for="brushTool"
+            class="tool-button cursor-pointer bg-white text-gray-800 hover:bg-gray-200 rounded-md transition"
+          >
+            <img src="/assets/img/brush.png" alt="BRUSH" style="width: 24px; height: 24px;" />
+          </label>
+
+          <input type="radio" name="tool" id="rectangleTool" class="hidden" />
+          <label
+            for="rectangleTool"
+            class="tool-button cursor-pointer bg-white text-gray-800 hover:bg-gray-200 rounded-md transition"
+          >
+            <img src="/assets/img/rect.png" alt="RECTANGLE" style="width: 24px; height: 24px;" />
+          </label>
+
+          <input type="radio" name="tool" id="clearCanvas" class="hidden" />
+          <label
+            for="clearCanvas"
+            class="tool-button cursor-pointer bg-white text-gray-800 hover:bg-gray-200 rounded-md transition"
+          >
+            <img src="/assets/img/clear.png" alt="CLEAR" style="width: 24px; height: 24px;" />
+          </label>
+
+          <input type="radio" name="camtool" id="camButton" class="hidden" />
+          <label
+            for="camButton"
+            class="tool-button cursor-pointer bg-white text-gray-800 hover:bg-gray-200 rounded-md transition"
+          >
+            <img src="/assets/img/heatmap.png" alt="HEATMAP" style="width: 24px; height: 24px;" />
+          </label>
+
+          <!-- 기존의 Color와 Size 입력란은 그대로 유지 -->
+          <label class="flex items-center">
+            Color:
+            <input
+              type="color"
+              id="colorPicker"
+              class="ml-1 md:ml-2 w-6 md:w-8 h-6 md:h-8 rounded cursor-pointer"
+            />
+          </label>
+          <label class="flex items-center">
+            Size:
+            <input
+              type="range"
+              id="brushSize"
+              min="1"
+              max="20"
+              value="5"
+              class="ml-1 md:ml-2 w-20 md:w-24"
+            />
+          </label>
+        </div>
+            <!-- Canvas Section -->
+            <div class="relative">
+              <div class="canvas-container relative w-full max-w-full h-auto">
+                <canvas
+                  id="dicomCanvas"
+                  class="border border-gray-300 rounded-lg shadow-sm w-full"
+                ></canvas>
+                <canvas
+                  id="camCanvas"
+                  class="absolute top-0 left-0 w-full h-full"
+                ></canvas>
+                <canvas
+                  id="diagnosisCanvas"
+                  class="absolute top-0 left-0 w-full h-full"
+                ></canvas>
+                <input
+                  type="file"
+                  id="imageLoader"
+                  class="hidden"
+                  accept="image/*"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: 촬영 리스트 및 예측 결과 -->
+        <div class="flex-1 space-y-4 md:space-y-6">
+          <div class="bg-white p-4 md:p-6 rounded-lg shadow-md">
+            <h3
+              class="text-lg md:text-xl font-bold mb-2 md:mb-4 border-b pb-1 md:pb-2"
+            >
+              촬영 리스트
+            </h3>
+            <ul id="patientList" class="space-y-2">
+              <li>
+                <button
+                  id="patientBtn0"
+                  class="text-blue-500 hover:text-blue-700 transition"
+                >
+                  Patient 1
+                </button>
+              </li>
+              <li>
+                <button
+                  id="patientBtn1"
+                  class="text-blue-500 hover:text-blue-700 transition"
+                >
+                  Patient 2
+                </button>
+              </li>
+              <li>
+                <button
+                  id="patientBtn2"
+                  class="text-blue-500 hover:text-blue-700 transition"
+                >
+                  Patient 2
+                </button>
+              </li>
+            </ul>
+            <div id="pagination" class="flex justify-center mt-4"></div>
+          </div>
+
+          <div
+            id="diagnosisResults"
+            class="bg-white p-4 md:p-6 rounded-lg shadow-md"
+          >
+            <h3
+              class="text-lg md:text-xl font-bold mb-2 md:mb-4 border-b pb-1 md:pb-2"
+            >
+              병변 예측 결과
+            </h3>
+            <!-- <ul class="space-y-2 flex-1 overflow-y-auto">
+              <li class="flex justify-between items-center">
+                <div>병변 1</div>
+              </li>
+              <li class="flex justify-between items-center">
+                <span>병변 2</span>
+              </li>
+            </ul> -->
+            <table class="table-fixed w-full border-collapse">
+			  <tr class="border-b">
+			    <td class="w-1/2 text-left p-2">Atelectasis</td>
+			    <td class="w-1/2 text-right p-2 font-semibold">80.5%</td>
+			  </tr>
+			  <tr class="border-b">
+			    <td class="w-1/2 text-left p-2">Lung Lesion</td>
+			    <td class="w-1/2 text-right p-2 font-semibold">71.0%</td>
+			  </tr>
+			  <tr class="border-b">
+			    <td class="w-1/2 text-left p-2">Pneumonia</td>
+			    <td class="w-1/2 text-right p-2 font-semibold">60.8%</td>
+			  </tr>
+			  <tr>
+			    <td class="w-1/2 text-left p-2">Enlarged Cardiomedias...</td>
+			    <td class="w-1/2 text-right p-2 font-semibold">43.7%</td>
+			  </tr>
+			</table>
+            
+          </div>
+
+          <div class="bg-white p-4 md:p-6 rounded-lg shadow-md">
+            <h3
+              class="text-lg md:text-xl font-bold mb-2 md:mb-4 border-b pb-1 md:pb-2"
+            >
+              의사 소견란
+            </h3>
+            <textarea
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-y"
+              placeholder="의사 소견 입력"
+              style="min-height: 100px; max-height: 400px"
+            ></textarea>
+            <div class="flex justify-end mt-4">
+              <button
+                id="opSubmit"
+                class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-md transition"
+              >
+                저장
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script src="/assets/js/brush.js"></script> -->
+    <script src="/assets/js/header.js"></script>
+    <!-- <script src="/assets/js/canvas.js"></script> -->
+    <script src="/assets/js/xray.js"></script>
+  </body>
+</html>
