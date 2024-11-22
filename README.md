@@ -12,11 +12,11 @@
   - 의사의 편의성 향상을 위해 흉부 X-ray에 직접 **붓그림이나 사각형을 그릴 수 있는 도구 기능**
 
 ## 👨‍👦‍👦 팀원 소개
-| 이지웅 | 최문경 | 윤주향 |
-|:---:|:---:|:---:|
-| <img src="https://github.com/user-attachments/assets/8169f93c-1e45-473f-84c3-e07a1a09069b" width="150" /> | <img src="https://github.com/user-attachments/assets/99ec626b-50a8-4a58-9eba-331f5d45f4e3" width="150" /> | <img src="https://github.com/user-attachments/assets/e8060276-734a-47a6-a8a1-e261730cff7d" width="150" /> |
-| [@JIWOONG12](https://github.com/JIWOONG12) | [@mooonkyeong](https://github.com/mooonkyeong) | [@JuHyang-Y](https://github.com/JuHyang-Y) |
-| PM & Modeling |  Modeling | Back-End & DB |
+| 이지웅 | 최문경 | 윤주향 | 박주형 |
+|:---:|:---:|:---:|:---:|
+| <img src="https://github.com/user-attachments/assets/8169f93c-1e45-473f-84c3-e07a1a09069b" width="150" /> | <img src="https://github.com/user-attachments/assets/99ec626b-50a8-4a58-9eba-331f5d45f4e3" width="150" /> | <img src="https://github.com/user-attachments/assets/e8060276-734a-47a6-a8a1-e261730cff7d" width="150" /> | <img src="https://github.com/user-attachments/assets/e8060276-734a-47a6-a8a1-e261730cff7d" width="150" /> |
+| [@JIWOONG12](https://github.com/JIWOONG12) | [@mooonkyeong](https://github.com/mooonkyeong) | [@JuHyang-Y](https://github.com/JuHyang-Y) | [@JuHyang-Y](https://github.com/JuHyang-Y) |
+| PM & Modeling |  Modeling | Back-End & DB | Front-end |
 
 
 ## 🎥 시연 영상
@@ -29,7 +29,7 @@ https://github.com/user-attachments/assets/ac672086-a89f-4133-89e5-b7196d88d683
  
 ## 🔨 사용 기술
   #### ✔️Back-end
-<img src="https://img.shields.io/badge/java-E34F26?style=for-the-badge&logo=java&logoColor=white"><img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"><img src="https://img.shields.io/badge/fastapi-009688?style=for-the-badge&logo=fastapi&logoColor=white">
+<img src="https://img.shields.io/badge/java-E34F26?style=for-the-badge&logo=java&logoColor=white"><img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"><img src="https://img.shields.io/badge/fastapi-009688?style=for-the-badge&logo=python&logoColor=white"><img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=yellow">
   #### ✔️front-end
 <img src="https://img.shields.io/badge/html5-E34F26F?style=for-the-badge&logo=html5&logoColor=green"><img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=yellow"><img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=yellow"><img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=yellow">
   #### ✔️Model
@@ -151,4 +151,37 @@ https://github.com/user-attachments/assets/ac672086-a89f-4133-89e5-b7196d88d683
 <em>Canvas API를 활용한 의료 영상 진단 마킹 예시</em>
 </p>
 
+## 🛠 트러블슈팅 & 기술 구현
 
+### 1. 백엔드 (Back-end) CORS 설정
+#### 발생한 문제
+- Spring Boot와 FastAPI 서버간 통신 시도 
+- 서버 간의 도메인 달라 CORS 문제 발생
+
+#### 해결 방법
+- FastAPI에 CORSMiddleware를 추가
+- 크로스도메인 통신 허용 설정
+- 서버 간 안전적 통신 구현
+- 응답 데이터 정상 수신
+
+### 2. 프론트엔드 Canvas API 데이터 소실
+#### 발생한 문제
+- Canvas 태그에 이미지와 사용자 그림을 동시에 그리도록 구현
+- 사용자 화면 변경 시 데이터가 소실되는 과정에서 전체 데이터가 손실
+
+#### 해결 방법
+- 이미지와 그림을 각각 별도의 canvas 태그에 분리하여 렌더링
+- 화면 변경 전에 데이터를 저장하고 복원하는 작업 추가
+
+### 3. Grad-CAM 모델 구현
+#### 발생한 문제
+- Resnet 모델로 학습을 진행할 때 사용하던 Grad-CAM은 ViT에 맞게 수정하는 과정에서 문제 발생
+- Renet은 2D 활성화 맵이 존재하지만 ViT는 Transformer 기반으로 활성화 맵이 존재하지 않아 차원오류 발생
+
+#### 해결 방법
+- reshape_transform 함수를 사용하여 ViT 블록의 출력을 Grad-CAM에서 사용가능한 형태로 변환하여 적용
+
+### 📈 향후 확장 계획
+1. 폐 질환 조기/진단을 위한 AI 분석 기능 확장
+2. 의료진 업무 효율성 및 의료 서비스 향상
+3. X-ray뿐 아니라 MRI, CT까지 확장하여 진단 업무를 위한 의료 서비스 품질 향상
