@@ -36,12 +36,12 @@
 ![image](https://github.com/user-attachments/assets/bf7535ec-76c5-40bd-8bdf-17f9cd31f0de)
 
 ## ✒ Data Preprocessing
-<img src="https://github.com/user-attachments/assets/9f1937df-8df0-4ecd-ae11-33eca72f5945" width="70%" />
-<img src="https://github.com/user-attachments/assets/051d31bc-3f63-495c-bcfe-29494e6c4777" width="70%" />
-<img src="https://github.com/user-attachments/assets/173a614b-a898-4770-9ccd-e1ba42707bca" width="70%" />
-<img src="https://github.com/user-attachments/assets/92aacc9e-82ce-487a-99ef-c047adfb2b88" width="70%" />
-<img src="https://github.com/user-attachments/assets/40a597aa-6e13-4f84-ae03-b90216e3ca28" width="70%" />
-<img src="https://github.com/user-attachments/assets/68b77445-4279-42b8-ae78-dbc02637b64e" width="70%" />
+<img src="https://github.com/user-attachments/assets/9f1937df-8df0-4ecd-ae11-33eca72f5945" width="80%" />
+<img src="https://github.com/user-attachments/assets/051d31bc-3f63-495c-bcfe-29494e6c4777" width="80%" />
+<img src="https://github.com/user-attachments/assets/173a614b-a898-4770-9ccd-e1ba42707bca" width="80%" />
+<img src="https://github.com/user-attachments/assets/92aacc9e-82ce-487a-99ef-c047adfb2b88" width="80%" />
+<img src="https://github.com/user-attachments/assets/40a597aa-6e13-4f84-ae03-b90216e3ca28" width="80%" />
+<img src="https://github.com/user-attachments/assets/68b77445-4279-42b8-ae78-dbc02637b64e" width="80%" />
 
 ## 🎥 시연 영상
 
