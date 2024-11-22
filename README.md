@@ -42,15 +42,14 @@ https://github.com/user-attachments/assets/ac672086-a89f-4133-89e5-b7196d88d683
 
 ## ✒ DataSet
 
- ## 데이터 출처
-  ### 📊 MIMIC_CXR (4.7TB)
+ ### 데이터 출처
+  #### 📊 MIMIC_CXR (4.7TB)
 - MIT 계산생명연구실에서 관리하는 의학 연구 데이터 저장소
 - 법수 교육이나 선행연구에 위해 교육 수료증과 같은 승인 절차 필요
 - 총 227,835건의 환자사진 연구에 해당하는 377,110개의 X-ray 이미지
 - 4.7TB DICOM 형식의 파일
 
-
-  ### 📋 DICOM (Digital Imaging and Communications in Medicine)
+  #### 📋 DICOM (Digital Imaging and Communications in Medicine)
 <img src="https://github.com/user-attachments/assets/52f6447e-418e-4e86-bd40-fb938e6e87f6" width="50%" alt="DICOM Logo">
 
 - 국제 의료 디지털 영상 표준 형태
