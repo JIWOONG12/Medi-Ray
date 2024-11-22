@@ -14,7 +14,7 @@
 ## 👨‍👦‍👦 팀원 소개
 | 이지웅 | 최문경 | 윤주향 | 박주형 |
 |:---:|:---:|:---:|:---:|
-| <img src="https://github.com/user-attachments/assets/8169f93c-1e45-473f-84c3-e07a1a09069b" width="150" /> | <img src="https://github.com/user-attachments/assets/99ec626b-50a8-4a58-9eba-331f5d45f4e3" width="150" /> | <img src="https://github.com/user-attachments/assets/e8060276-734a-47a6-a8a1-e261730cff7d" width="150" /> | <img src="https://github.com/user-attachments/assets/e8060276-734a-47a6-a8a1-e261730cff7d" width="150" /> |
+| <img src="https://github.com/user-attachments/assets/8169f93c-1e45-473f-84c3-e07a1a09069b" width="150" /> | <img src="https://github.com/user-attachments/assets/99ec626b-50a8-4a58-9eba-331f5d45f4e3" width="150" /> | <img src="https://github.com/user-attachments/assets/e8060276-734a-47a6-a8a1-e261730cff7d" width="150" /> | <img src="https://github.com/user-attachments/assets/a91ad806-d42a-4521-8a10-174371efafcc" width="150" /> |
 | [@JIWOONG12](https://github.com/JIWOONG12) | [@mooonkyeong](https://github.com/mooonkyeong) | [@JuHyang-Y](https://github.com/JuHyang-Y) | [@JuHyang-Y](https://github.com/JuHyang-Y) |
 | PM & Modeling |  Modeling | Back-End & DB | Front-end |
 
@@ -96,11 +96,6 @@ https://github.com/user-attachments/assets/ac672086-a89f-4133-89e5-b7196d88d683
 - 다중 레이블(Multi-label) 데이터의 불균형을 고려하여 데이터를 K개의 폴드로 나누는 교차검증 기법
 - Multi-label 간의 상관 관계를 유지하고 희소 데이터를 확보하는 방식 채택
 
-## 3. MultilabelStratifiedKFold 데이터 분할
-### 🔄 분할 방식
-- 다중 레이블(Multi-label) 데이터의 불균형을 고려하여 데이터를 K개의 폴드로 나누는 교차검증 기법
-- Multi-label 간의 상관 관계를 유지하고 희소 데이터를 확보하는 방식 채택
-
 ### 📊 데이터 분할 상세
 #### Train/Validation/Test 데이터 분포
 
@@ -137,13 +132,7 @@ https://github.com/user-attachments/assets/ac672086-a89f-4133-89e5-b7196d88d683
 ### 2. Canvas API 기반 드로잉 기능
 - Javascript와 HTML canvas 엘리먼트를 통해 그래픽을 그릴 수 있는 수단을 제공하는 API
 - 진단 결과를 더 쉽고 직관적으로 설명할 수 있도록 하기 위함
-- 주요 기능:
- - 자유 곡선 그리기
- - 도형 그리기 (원, 사각형 등)
- - 텍스트 삽입
- - 그리기 도구 설정 (색상, 선 굵기, 투명도 등)
- - 실행 취소/다시 실행
- - 캔버스 초기화
+- 주요 기능: 자유 곡선 그리기, 사각형 그리기, 그리기 도구 설정(색상, 선 굵기), 캔버스 초기화
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/70bd4d0c-af9f-42a8-a723-9779373b1854" width="30%" />
