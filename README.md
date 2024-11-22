@@ -15,7 +15,7 @@
 | 이지웅 | 최문경 | 윤주향 | 박주형 |
 |:---:|:---:|:---:|:---:|
 | <img src="https://github.com/user-attachments/assets/8169f93c-1e45-473f-84c3-e07a1a09069b" width="150" /> | <img src="https://github.com/user-attachments/assets/99ec626b-50a8-4a58-9eba-331f5d45f4e3" width="150" /> | <img src="https://github.com/user-attachments/assets/e8060276-734a-47a6-a8a1-e261730cff7d" width="150" /> | <img src="https://github.com/user-attachments/assets/a91ad806-d42a-4521-8a10-174371efafcc" width="150" /> |
-| [@JIWOONG12](https://github.com/JIWOONG12) | [@mooonkyeong](https://github.com/mooonkyeong) | [@JuHyang-Y](https://github.com/JuHyang-Y) | [@JuHyang-Y](https://github.com/JuHyang-Y) |
+| [@JIWOONG12](https://github.com/JIWOONG12) | [@mooonkyeong](https://github.com/mooonkyeong) | [@JuHyang-Y](https://github.com/JuHyang-Y) | [@Park-Daniel](https://github.com/Park-Daniel) |
 | PM & Modeling |  Modeling | Back-End & DB | Front-end |
 
 
