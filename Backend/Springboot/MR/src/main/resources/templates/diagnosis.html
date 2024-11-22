@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diagnosis - Medi-Ray</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body class="bg-white">
+    <!-- Header -->
+    <header
+      class="bg-white w-full h-16 shadow-md fixed flex items-center px-4 z-50"
+    >
+      <!-- 로고 이미지 -->
+      <img
+        src="assets/img/logo.svg"
+        alt="Medi-Ray Logo"
+        class="w-32 h-auto cursor-pointer"
+        id="logo"
+      />
+
+      <!-- 햄버거 버튼 -->
+      <button id="menuToggle" class="ml-auto text-gray-800">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </header>
+
+    <!-- Accordion Menu (Right Sidebar) -->
+    <div
+      id="accordionMenu"
+      class="bg-black text-white p-6 transform translate-x-full fixed top-0 right-0 h-full w-64 transition-transform duration-300 z-50"
+    >
+      <!-- Close Button -->
+      <button
+        id="closeBtn"
+        class="absolute top-4 right-4 text-white text-2xl focus:outline-none"
+      >
+        ✕
+      </button>
+
+      <!-- User Info Section -->
+	<div class="flex flex-col items-center justify-center border-b border-gray-700 pb-4 mb-4 mt-12">
+	  <img
+	    src="/assets/img/Profile.png"
+	    alt="Profile Image"
+	    class="w-16 h-16 rounded-full mb-2"
+	  />
+	<div id="user-info" class="text-center text-gray-300 text-lg flex flex-col gap-2 items-center">
+	  <p>사용자 이름</p>
+	  <button class="text-red-500 hover:text-red-600 ml-0">로그아웃</button>
+	</div>
+	
+	</div>
+
+
+      <!-- Navigation Links -->
+      <nav class="space-y-2">
+        <a
+          href="about"
+          class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white rounded transition duration-300"
+        >
+          About Us
+        </a>
+        <a
+          href="dicom"
+          class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white rounded transition duration-300"
+        >
+          DICOM Upload
+        </a>
+        <a
+          href="diagnosis"
+          class="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white rounded transition duration-300"
+        >
+          Diagnosis
+        </a>
+      </nav>
+    </div>
+
+    <!-- Main Content (중앙 정렬) -->
+    <div class="p-8 flex flex-col justify-center items-center min-h-screen">
+      <h1 class="text-3xl font-bold mb-4">Diagnosis</h1>
+
+      <!-- 환자 이름 입력 및 검색 -->
+      <div class="mb-6 flex items-center space-x-4">
+        <label for="inputValue" class="text-lg">환자 정보 입력:</label>
+        <input
+          type="text"
+          id="inputValue"
+          class="border border-gray-400 p-2 rounded-lg"
+          placeholder="이름 또는 코드를 입력해주세요"
+        />
+        <button
+          id="searchBtn"
+          class="bg-gray-500 text-white py-2 px-4 rounded-lg"
+        >
+          검색
+        </button>
+      </div>
+
+      <!-- 환자 정보 테이블 -->
+      <table class="table-auto border-collapse w-3/4 mt-4 text-center">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border px-4 py-2">환자코드</th>
+            <th class="border px-4 py-2">이름</th>
+            <th class="border px-4 py-2">생년월일</th>
+            <th class="border px-4 py-2">성별</th>
+            <th class="border px-4 py-2">담당의사</th>
+          </tr>
+        </thead>
+        <tbody id="patientTableBody">
+          <!-- 동적으로 환자 데이터 렌더링 -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/assets/js/diagnosis.js"></script>
+    <script src="/assets/js/header.js"></script>
+  </body>
+</html>

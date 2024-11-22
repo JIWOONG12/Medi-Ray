@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medi-Ray</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 외부 Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&subset=cyrillic"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- 외부 CSS 파일 -->
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+
+    <!-- Stats.js CDN (파도 애니메이션에서 필요) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r17/Stats.min.js"></script>
+  </head>
+  <body class="flex min-h-screen font-sans relative overflow-hidden">
+    <!-- 파도 애니메이션 배경 -->
+    <div id="holder"></div>
+
+    <!-- 기존 Header 복원 -->
+    <header
+      class="bg-white w-full h-16 shadow-md fixed flex items-center px-4 z-10"
+    >
+      <!-- 로고 이미지 -->
+      <img
+        src="/assets/img/logo.svg"
+        alt="Medi-Ray Logo"
+        class="w-32 h-auto cursor-pointer"
+        id="logo"
+      />
+
+      <!-- 햄버거 버튼 -->
+      <!-- <button id="menuToggle" class="ml-auto text-gray-800">
+        <i class="fas fa-bars text-2xl"></i>
+      </button> -->
+    </header>
+
+    <!-- Accordion Menu (Right Sidebar) -->
+    <div
+      id="accordionMenu"
+      class="bg-black text-white p-6 transform translate-x-full fixed top-0 right-0 h-full w-64 transition-transform duration-300 z-20"
+    >
+      <!-- Close Button -->
+      <!-- <button id="closeBtn" class="text-white mb-4 focus:outline-none">
+        <i class="fas fa-times text-xl"></i> Close
+      </button> -->
+
+      <!-- Accordion Links -->
+      <!-- <a href="about" class="py-2 block hover:bg-gray-700 rounded">About Us</a>
+      <a href="#" class="py-2 block hover:bg-gray-700 rounded">DICOM Upload</a>
+      <a href="#" class="py-2 block hover:bg-gray-700 rounded">Diagnosis</a> -->
+    </div>
+
+<!-- Main Content (중앙 정렬 및 버튼 배치) -->
+<div
+  class="flex flex-col justify-center items-center w-full p-6 relative z-10"
+  style="font-family: 'Pretendard-Regular'"
+>
+  <div class="text-center">
+    <div
+      class="p-8 rounded-lg w-[970px] h-[450px] mx-auto flex flex-col justify-center items-center bg-white bg-opacity-80 backdrop-filter backdrop-blur-lg"
+    >
+      <div>
+        <h1 class="text-5xl font-bold mb-4">"Better Decisions For Life"</h1>
+        <p class="text-2xl mb-6">
+          생명을 살리기 위한<br />더 나은 결정을 고민하는 당신에게
+        </p>
+        <!-- 버튼을 별도의 div로 감싸고 간격 조정 -->
+        <div class="flex justify-center space-x-4 mt-24">
+          <button
+            id="loginBtn"
+            class="bg-gray-500 text-white py-2 px-6 rounded hover:bg-gray-600 transition duration-300"
+          >
+            Login
+          </button>
+          <button
+            id="signUpBtn"
+            class="bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-600 transition duration-300"
+          >
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <!-- JavaScript for handling page navigation and external scripts -->
+    <script src="/assets/js/index.js"></script>
+    <script src="/assets/js/wave.js"></script>
+  </body>
+</html>

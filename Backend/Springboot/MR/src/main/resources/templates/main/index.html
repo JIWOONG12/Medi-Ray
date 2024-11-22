@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medi-Ray</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body class="flex min-h-screen font-sans">
+    <!-- Header -->
+    <header class="bg-white w-full h-16 shadow-md fixed flex items-center px-4">
+      <!-- 로고 이미지 -->
+      <img
+        src="assets/img/logo.svg"
+        alt="Medi-Ray Logo"
+        class="w-32 h-auto cursor-pointer"
+        id="logo"
+      />
+
+      <!-- 햄버거 버튼 -->
+      <!-- <button id="menuToggle" class="ml-auto text-gray-800">
+        <i class="fas fa-bars text-2xl"></i>
+      </button> -->
+    </header>
+
+    <!-- Accordion Menu (Right Sidebar) -->
+    <div
+      id="accordionMenu"
+      class="bg-black text-white p-6 transform translate-x-full fixed top-0 right-0 h-full w-64 transition-transform duration-300"
+    >
+      <!-- Close Button -->
+      <button id="closeBtn" class="text-white mb-4 focus:outline-none">
+        <i class="fas fa-times text-xl"></i> Close
+      </button>
+
+      <!-- Accordion Links -->
+      <a href="about" class="py-2 block hover:bg-gray-700 rounded"
+        >About Us</a
+      >
+      <a href="#" class="py-2 block hover:bg-gray-700 rounded">DICOM Upload</a>
+      <a href="#" class="py-2 block hover:bg-gray-700 rounded">Diagnosis</a>
+    </div>
+
+    <!-- Main Content (중앙 정렬 및 버튼 배치) -->
+    <div
+      class="flex flex-col justify-center items-center w-full p-6"
+      style="font-family: 'Pretendard-Regular'"
+    >
+      <div class="text-center">
+        <div
+          class="p-8 rounded-lg w-[970px] h-[450px] mx-auto flex justify-center items-center"
+        >
+          <div>
+            <h1 class="text-5xl font-bold mb-4">"Better Decisions For Life"</h1>
+            <p class="text-2xl">
+              생명을 살리기 위한<br />더 나은 결정을 고민하는 당신에게
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 flex space-x-4">
+        <!-- 버튼을 같은 줄에 배치 -->
+        <button
+          id="loginBtn"
+          class="bg-gray-500 text-white py-2 px-6 rounded hover:bg-gray-600"
+        >
+          Login
+        </button>
+        <button
+          id="signUpBtn"
+          class="bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-600"
+        >
+          Sign Up
+        </button>
+      </div>
+    </div>
+
+    <!-- JavaScript for handling page navigation -->
+    <script>
+      // 로그인 버튼 클릭 시 로그인 페이지로 이동
+      document
+        .getElementById('loginBtn')
+        .addEventListener('click', function () {
+         window.location.href = '/login'; // '/login'을 실제 로그인 페이지 경로로 변경
+        });
+
+      // 회원가입 버튼 클릭 시 회원가입 페이지로 이동
+      document
+        .getElementById('signUpBtn')
+        .addEventListener('click', function () {
+         window.location.href = '/signup'; // '/signup'을 실제 회원가입 페이지 경로로 변경
+        });
+
+      // 로고 클릭 시 index.html로 이동
+      document.getElementById('logo').addEventListener('click', function () {
+        window.location.href = 'index';
+      });
+
+      // 아코디언 메뉴 열기/닫기
+      const menuToggle = document.getElementById('menuToggle');
+      const accordionMenu = document.getElementById('accordionMenu');
+      const closeBtn = document.getElementById('closeBtn');
+
+      menuToggle.addEventListener('click', () => {
+        accordionMenu.classList.add('open'); // 메뉴 열기
+      });
+
+      closeBtn.addEventListener('click', () => {
+        accordionMenu.classList.remove('open'); // 메뉴 닫기
+      });
+    </script>
+  </body>
+</html>
