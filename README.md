@@ -12,10 +12,10 @@
   - 의사의 편의성 향상을 위해 흉부 X-ray에 직접 **붓그림이나 사각형을 그릴 수 있는 도구 기능**
 
 ## 👨‍👦‍👦 팀원 소개
-| 이지웅 | 최문경 | 윤주향 | 박주형 |
+| 이지웅 | 최문경 | 윤주향 | 이현준 |
 |:---:|:---:|:---:|:---:|
-| <img src="https://github.com/user-attachments/assets/8169f93c-1e45-473f-84c3-e07a1a09069b" width="150" /> | <img src="https://github.com/user-attachments/assets/99ec626b-50a8-4a58-9eba-331f5d45f4e3" width="150" /> | <img src="https://github.com/user-attachments/assets/e8060276-734a-47a6-a8a1-e261730cff7d" width="150" /> | <img src="https://github.com/user-attachments/assets/a91ad806-d42a-4521-8a10-174371efafcc" width="150" /> |
-| [@JIWOONG12](https://github.com/JIWOONG12) | [@mooonkyeong](https://github.com/mooonkyeong) | [@JuHyang-Y](https://github.com/JuHyang-Y) | [@Park-Daniel](https://github.com/Park-Daniel) |
+| <img src="https://github.com/user-attachments/assets/8169f93c-1e45-473f-84c3-e07a1a09069b" width="150" /> | <img src="https://github.com/user-attachments/assets/99ec626b-50a8-4a58-9eba-331f5d45f4e3" width="150" /> | <img src="https://github.com/user-attachments/assets/e8060276-734a-47a6-a8a1-e261730cff7d" width="150" /> | <img src="https://github.com/user-attachments/assets/6bf3ab29-b6de-413a-b828-c03296f9f9b8" width="150" /> |
+| [@JIWOONG12](https://github.com/JIWOONG12) | [@mooonkyeong](https://github.com/mooonkyeong) | [@JuHyang-Y](https://github.com/JuHyang-Y) | [@Ez0929](https://github.com/Ez0929) |
 | PM & Modeling |  Modeling | Back-End & DB | Front-end |
 
 
