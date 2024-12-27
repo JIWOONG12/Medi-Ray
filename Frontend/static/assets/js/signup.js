@@ -118,15 +118,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			return; // 회원가입 진행 중단
 		}
 
-		// 회원가입 데이터를 서버로 전송
-		const data = {
-			dtCode: doctorCode,
-		    dtId: email,
-		    dtPw: password,
-		    dtName: name,
-		    division: hospital,
-		    dtTelno: phone,
-		};
 
 		
 		fetch('/signup/register', {
@@ -134,14 +125,20 @@ document.addEventListener('DOMContentLoaded', function() {
 		    headers: {
 		        'Content-Type': 'application/json',
 		    },
-		    body: JSON.stringify(data),
+		    body: JSON.stringify({
+				DT_CODE: doctorCode,
+			    DT_ID: email,
+			    DT_PW: password,
+			    DT_NAME: name,
+			    DIVISION: hospital,
+			    DT_TELNO: phone,
+			}),
 		})
 		.then(response => {
 		    console.log('Response status:', response.status); // 응답 상태 코드 확인
 		    return response.text();
 		})
 		.then(data => {
-		    console.log('Response data:', data); // 응답 데이터 확인
 		    if (data === '1') {
 		        alert('회원가입이 완료되었습니다!\n로그인을 진행합니다.');
 		        window.location.href = 'login';
