@@ -14,11 +14,11 @@ function fetchUserDetails() {
     })
     .then((data) => {
       // 마이페이지 필드에 정보 채우기
-      document.getElementById("name").value = data.dt_NAME;
-      document.getElementById("phone").value = data.dt_TELNO;
-      document.getElementById("email").value = data.dt_ID;
-      document.getElementById("doctor-code").value = data.dt_CODE;
-      document.getElementById("hospital").value = data.division;
+      document.getElementById("name").value = data.DT_NAME;
+      document.getElementById("phone").value = data.DT_TELNO;
+      document.getElementById("email").value = data.DT_ID;
+      document.getElementById("doctor-code").value = data.DT_CODE;
+      document.getElementById("hospital").value = data.DIVISION;
     })
     .catch((error) => {
       console.error("Error fetching user details:", error);
@@ -98,6 +98,9 @@ document
   .addEventListener("click", function () {
     const password = document.getElementById("new-password").value;
     const confirmPassword = document.getElementById("new-password-confirm").value;
+    const confirmPasswordMessage = document.getElementById(
+      "new-confirm-password-message"
+    );
 
     // 비밀번호 유효성 검사
     const passwordRegex =
@@ -126,6 +129,7 @@ document
             document.getElementById("new-password-confirm").value = "";
             document.getElementById("new-password-section").classList.add("hidden");
             document.getElementById("current-password").value = "";
+            confirmPasswordMessage.innerText = "";
           } else {
             alert("비밀번호 변경에 실패했습니다.");
           }

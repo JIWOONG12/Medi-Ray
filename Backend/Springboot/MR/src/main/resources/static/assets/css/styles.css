@@ -108,13 +108,17 @@ body {
   padding: 0.5rem 1rem;
 }
 
-/* 선택된 버튼 스타일 */
+/* canvas 선택된 버튼 스타일 */
 input[name="tool"]:checked + .tool-button {
   background-color: #3b82f6; /* Tailwind의 blue-500 */
   color: white;
 }
-/* 선택된 버튼 스타일 */
+/* heatmap 선택된 버튼 스타일 */
 input[name="camtool"]:checked + .tool-button {
   background-color: #3b82f6; /* Tailwind의 blue-500 */
   color: white;
+}
+
+#patientList {
+    min-height: 90px; /* 필요에 따라 높이 값을 조절하세요 */
 }

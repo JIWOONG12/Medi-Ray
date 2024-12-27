@@ -96,8 +96,8 @@
               <input
                 type="text"
                 id="name"
-                class="w-full p-2 border border-gray-300 rounded"
-                placeholder="다니엘"
+                class="w-full p-2 border border-gray-300 rounded bg-gray-100"
+                placeholder="name"
                 readonly
               />
             </div>
@@ -109,8 +109,8 @@
               <input
                 type="text"
                 id="phone"
-                class="w-full p-2 border border-gray-300 rounded"
-                placeholder="010-1577-1577"
+                class="w-full p-2 border border-gray-300 rounded bg-gray-100"
+                placeholder="010-0000-0000"
                 readonly
               />
             </div>
@@ -122,7 +122,7 @@
               <input
                 type="email"
                 id="email"
-                class="w-full p-2 border border-gray-300 rounded"
+                class="w-full p-2 border border-gray-300 rounded bg-gray-100"
                 placeholder="example@gmail.com"
                 readonly
               />
@@ -130,9 +130,10 @@
 
             <!-- 현재 비밀번호 입력란 -->
             <div>
-              <label for="current-password" class="block text-gray-700 text-sm mb-1"
-                >현재 비밀번호</label
+              <label for="current-password" class="block text-gray-700 text-sm"
+                >비밀번호</label
               >
+              <div class="block text-gray-400 text-xs mb-2">비밀번호 변경을 원하시면 현재 비밀번호를 입력해주세요.</div>
               <input
                 type="password"
                 id="current-password"
@@ -145,7 +146,7 @@
                 id="confirm-current-password"
                 class="mt-2 w-full p-2 bg-gray-500 text-white rounded"
               >
-                확인
+                Check
               </button>
             </div>
 
@@ -161,7 +162,7 @@
                   class="w-full p-2 border border-gray-300 rounded"
                   placeholder="새 비밀번호를 입력해주세요"
                 />
-                <div id="new-password-message" class="text-red-500 text-sm"></div>
+                <div id="new-password-message" class="text-red-500 text-sm mb-2"></div>
               </div>
 
               <div>
@@ -181,9 +182,9 @@
               <button
                 type="button"
                 id="update-password"
-                class="mt-2 w-full p-2 bg-blue-500 text-white rounded"
+                class="mt-2 w-full p-2 bg-gray-500 text-white rounded"
               >
-                비밀번호 변경
+                Alter
               </button>
             </div>
 
@@ -194,16 +195,16 @@
               <input
                 type="text"
                 id="doctor-code"
-                class="w-full p-2 border border-gray-300 rounded"
-                placeholder="24-00000001"
+                class="w-full p-2 border border-gray-300 rounded bg-gray-100"
+                placeholder="doctor code"
                 readonly
               />
             </div>
 
             <div>
-              <label for="hospital" class="block text-gray-700 text-sm mb-1"
-                >의사소속</label
-              >
+              <label for="hospital" class="block text-gray-700 text-sm"
+                >의사소속</label>
+              <div class="block text-gray-400 text-xs mb-2">소속이 바뀌셨다면 입력 후 'Alter'를 눌러주세요.</div>
               <input
                 type="text"
                 id="hospital"
@@ -216,7 +217,7 @@
                 id="update-division"
                 class="mt-2 w-full p-2 bg-gray-500 text-white rounded"
               >
-                수정
+                Alter
               </button>
             </div>
           </div>

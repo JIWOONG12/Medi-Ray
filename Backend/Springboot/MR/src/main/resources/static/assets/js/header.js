@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   // 서버에서 사용자 정보 가져오기
   function fetchUserName() {
-    return fetch('/user/get-name', {
+    return fetch('/user/mypage', {
       method: 'GET',
       credentials: 'include'  // 세션 기반 인증을 위한 설정
     })
@@ -9,11 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!response.ok) {
         throw new Error('사용자 정보를 가져오지 못했습니다.');
       }
-      return response.text();
+      return response.json(); // JSON 데이터를 반환하도록 수정
     })
-    .then(name => {
-      console.log('Fetched user name:', name);  // 서버에서 가져온 사용자 이름 출력
-      return name;
+    .then(doctorDetails => {
+      console.log('Fetched user name:', doctorDetails.DT_NAME);  // 서버에서 가져온 사용자 이름 출력
+      const userName = doctorDetails.DT_NAME; // DT_NAME만 추출
+      return userName;
     })
     .catch(error => {
       console.error('Error fetching user name:', error);
@@ -22,15 +23,15 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // 로그인/로그아웃 UI를 동적으로 업데이트하는 함수
-  function updateAuthUI(name) {
-	console.log('Updating UI with name:', name);  // updateAuthUI 함수에 전달된 이름 출력
+  function updateAuthUI(userName) {
+	console.log('Updating UI with name:', userName);  // updateAuthUI 함수에 전달된 이름 출력
     const authContainer = document.getElementById('user-info');
     authContainer.innerHTML = ''; // 기존 내용 초기화
 
-    if (name) {
+    if (userName) {
       // 로그인된 상태: 사용자 이름과 로그아웃 버튼 표시
       const userNameSpan = document.createElement('span');
-      userNameSpan.textContent = `${name} 님`;
+      userNameSpan.textContent = `${userName} 님`;
       userNameSpan.style.cursor = 'pointer';  // 사용자 이름에 클릭 가능 포인터 표시
 
       // 사용자 이름 클릭 시 마이페이지로 이동

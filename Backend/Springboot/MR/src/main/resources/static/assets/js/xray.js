@@ -56,12 +56,20 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDiagnosisResults(xrayCode);
         const xrayImgPath = `/diagnosis/xray/getImage?ptCode=${encodeURIComponent(ptCode)}&xrayCode=${encodeURIComponent(xrayCode)}`;
         loadImageToCanvas(xrayImgPath);
+        refreshDateList();
     } else {
         console.error('localStorage에 xrayCode가 없습니다.');
+        redirectToErrorPage(); // 새 페이지로 리다이렉트
     }
 
     console.log('Loaded xrayCode:', xrayCode); // 받아온 값 확인
     console.log('Received ptCode:', ptCode);
+    
+    // 새 페이지로 리다이렉트하는 함수
+    function redirectToErrorPage() {
+        location.reload(); // 현재 페이지 새로고침
+    }
+    
 
     // Canvas API
     // 화면 크기에 맞게 캔버스를 리사이즈하는 함수
@@ -143,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
         drawDicomImage(); // Reset DICOM image on clear
         ctx.restore();
     });
+    
 
     // CAM button functionality
     // Grad-CAM 버튼 클릭 이벤트
@@ -160,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // AJAX 요청을 통해 FastAPI로 Base64 데이터 전송
             $.ajax({
-                url: 'https://localhost:8000/dicom/vit_gradcam', // FastAPI 엔드포인트
+                url: 'https://localhost:8000/dicom/resnet_gradcam', // FastAPI 엔드포인트
                 type: 'POST', // POST 요청
                 contentType: 'application/json', // JSON 형식으로 전송
                 data: JSON.stringify({ base64_img: base64Img }), // 요청 본문에 Base64 데이터 포함
@@ -195,6 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
             resetcamToolSelection()
         }
     });
+    
 
     // 툴 버튼들의 선택 상태를 해제하는 함수
     function resetToolSelection() {
@@ -215,6 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const toolInputs = document.querySelectorAll('input[name="camtool"]');
         toolInputs.forEach(input => {
             input.checked = true;
+            console.log(`Tool ${input.id} unchecked`); // 상태 확인 로그
         });
     }
 
@@ -229,44 +240,86 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.error('Error fetching dateList:', error);
         });
+        
 
     // 페이지 렌더링 함수
     function renderPage() {
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
         const itemsToDisplay = data.slice(startIndex, endIndex);
+        
+        // 모든 라디오 버튼 초기화
+	    const allRadioButtons = document.querySelectorAll('#patientList input[type="radio"]');
+	    allRadioButtons.forEach(radio => {
+	        radio.checked = false;
+	    });
 
-        document.querySelectorAll('#patientList > li > button').forEach(item => {
+        document.querySelectorAll('#patientList > li > label').forEach(item => {
             item.innerText = "";
+            item.classList.remove('text-blue-800', 'font-bold');
+        	item.classList.add('text-blue-500');
         });
+
+		// 현재 xrayCode찾기
+		const currentXrayCode = localStorage.getItem('xrayCode');
 
         // 촬영리스트에 값 할당하기
         itemsToDisplay.forEach((item, index) => {
-            const button = document.getElementById(`patientBtn${index}`);
-            button.innerText = item.xrayDate;
+            const input = document.getElementById(`patientBtn${index}`);
+	        const label = document.querySelector(`label[for="patientBtn${index}"]`);
+	        label.innerText = item.xrayDate;
+	        input.value = item.xrayCode;
+	        
+	        // 현재 xrayCode와 일치하는 항목 강조
+	        if (item.xrayCode === currentXrayCode) {
+	            input.checked = true;
+	            label.classList.remove('text-blue-500');
+	            label.classList.add('text-blue-800', 'font-bold');
+	        }
 
-            // 버튼 클릭 이벤트 - AJAX를 사용해 데이터 전송
-            button.onclick = function() {
-                // 사진 리스트 버튼 클릭 시 툴 버튼들의 선택 상태 해제
-                resetToolSelection();
+			
+            // 입력 요소의 change 이벤트 - AJAX를 사용해 데이터 전송
+	        input.onchange = function() {
+	            if (input.checked) {
+	                // 사진 리스트 버튼 클릭 시 툴 버튼들의 선택 상태 해제
+	                resetToolSelection();
+	                resetcamToolSelection();
+	                
+	
+	                fetch(`/diagnosis/xray/imgDate?ptCode=${encodeURIComponent(ptCode)}&xrayDate=${encodeURIComponent(item.xrayDate)}`)
+	                    .then(response => response.json())
+	                    .then(imgData => {
+	                        if (imgData.length > 0) {
+								xrayCode = imgData[0].xrayCode;  // xrayCode 직접 설정
+	                            updateScreen(imgData); // 화면에 데이터 업데이트
+	
+	                            // 선택된 xrayCode에 맞는 이미지와 의견 업데이트
+	                            fetchOpinionAndUpdate(); // 의견 업데이트
+	                            // 페이지가 변경될 때마다 호출 (예: xrayCode가 바뀔 때마다 호출)
+	                            fetchDiagnosisResults(xrayCode);
+	                            // 모든 레이블 스타일 초기화
+	                            document.querySelectorAll('#patientList > li > label').forEach(l => {
+	                                l.classList.remove('text-blue-800', 'font-bold');
+	                                l.classList.add('text-blue-500');
+	                            });
+	
+	                            // xrayCode에 맞는 리스트 선택되게 하기
+	                            // 선택된 항목만 강조
+	                            label.classList.remove('text-blue-500');
+	                            label.classList.add('text-blue-800', 'font-bold');
 
-                fetch(`/diagnosis/xray/imgDate?ptCode=${encodeURIComponent(ptCode)}&xrayDate=${encodeURIComponent(item.xrayDate)}`)
-                    .then(response => response.json())
-                    .then(imgData => {
-                        console.log("Received data:", imgData); // 받은 데이터를 콘솔에 출력
-                        updateScreen(imgData); // 화면에 데이터 업데이트
-                        localStorage.setItem('xrayCode', xrayCode); // localStorage에 새로운 xrayCode 저장
-
-                        // 선택된 xrayCode에 맞는 이미지와 의견 업데이트
-                        updateScreen(imgData);
-                        fetchOpinionAndUpdate(); // 의견 업데이트
-                        // 페이지가 변경될 때마다 호출 (예: xrayCode가 바뀔 때마다 호출)
-                        fetchDiagnosisResults(xrayCode);
-                    })
-                    .catch(error => console.error('Error fetching imgDate data:', error));
-            };
-        });
-    }
+	                        } else {
+	                            alert('선택한 데이터가 존재하지 않습니다.');
+	                        }
+	                    })
+	                    .catch(error => {
+	                        console.error('Error fetching imgDate data:', error);
+	                        refreshDateList(); // 오류가 발생하면 리스트 새로고침
+	                    });
+	            }
+	        };
+	    });
+	}
 
     // 이미지 로딩 후 캔버스에 표시
     function loadImageToCanvas(imgUrl) {
@@ -278,6 +331,11 @@ document.addEventListener('DOMContentLoaded', function() {
             drawCamImage();
             adjustCanvasSize(); // 이미지 로드 후 canvas 크기 조정
         };
+        img.onerror = () => {
+        console.error('이미지를 불러올 수 없습니다.');
+        alert('선택한 이미지가 삭제되었습니다. 리스트를 새로고침합니다.');
+        refreshDateList(); // 리스트 새로고침
+    	};
         img.src = imgUrl; // 이미지 경로 설정
     }
 
@@ -370,6 +428,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		adjustCanvasSize();
 		scaleCanvasContent();
 		drawCamImage();
+		refreshDateList();
 		});
 
     // 초기 설정
@@ -389,6 +448,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // xrayCode를 사용해 서버에서 데이터 가져오기
             fetchOpinionAndUpdate();
             fetchDiagnosisResults(xrayCode);
+            refreshDateList();
         }
     }
 
@@ -520,12 +580,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 초기 데이터 가져오기
-    fetch(`/diagnosis/xray/dateList?ptCode=${encodeURIComponent(ptCode)}`)
-        .then(response => response.json())
-        .then(fetchedData => {
-            data = fetchedData;
-            renderPage();
-        })
-        .catch(error => console.error('Error fetching dateList:', error));
+    // 새로고침 함수
+    function refreshDateList(){
+	    fetch(`/diagnosis/xray/dateList?ptCode=${encodeURIComponent(ptCode)}`)
+	        .then(response => response.json())
+	        .then(fetchedData => {
+	            data = fetchedData; // 최신 데이터를 저장
+	            renderPage(); // 페이지 업데이트
+	            renderPagination(); // 페이지네이션 업데이트
+	        })
+	        .catch(error => {
+	        	console.error('Error fetching dateList:', error);
+				redirectToErrorPage();
+			});
+	}
 });
