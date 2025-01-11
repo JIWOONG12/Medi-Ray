@@ -31,9 +31,16 @@
 + **MariaDB**
   + 10.5
 
+## ✏️ 시스템 아키텍처 & API 문서
+### 시스템 아키텍처
+![image](https://github.com/user-attachments/assets/85982069-141e-4ebe-94cc-23ce20919ff2)
+![image](https://github.com/user-attachments/assets/873e0903-c74a-431d-bf39-ec71af63fcd8)
+
+### API 문서
+ + [API 명세서](https://docs.google.com/spreadsheets/d/1gWSqK_wsTl03aVV3zX7HH4mJWQ9vPX0HMhkupyEhzwc/edit?usp=sharing) 작성중...
+
 ## 📝 참고사항
 + Spring Boot
-  + [API 명세서](https://docs.google.com/spreadsheets/d/1gWSqK_wsTl03aVV3zX7HH4mJWQ9vPX0HMhkupyEhzwc/edit?usp=sharing) 작성중...
   + frontend 부분 안에 포함하고 있음
 + FastAPI
   + [pytorch_grad_cam](https://github.com/jacobgil/pytorch-grad-cam/tree/master)은 github 에서 다운 받아서 사용
