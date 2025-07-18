@@ -118,6 +118,26 @@ https://github.com/user-attachments/assets/ac672086-a89f-4133-89e5-b7196d88d683
 
 ---
 
+## 🖼️ Web 구현
+![image](https://github.com/user-attachments/assets/85982069-141e-4ebe-94cc-23ce20919ff2)
+![image](https://github.com/user-attachments/assets/873e0903-c74a-431d-bf39-ec71af63fcd8)
+### ✏️ API 문서
++ [API 명세서](https://docs.google.com/spreadsheets/d/1gWSqK_wsTl03aVV3zX7HH4mJWQ9vPX0HMhkupyEhzwc/edit?usp=sharing)
+    
+### 🖼️ UI/UX
+#### 초기화면, 로그인화면, 회원가입화면
+![image](https://github.com/user-attachments/assets/52a64707-7157-4cf8-8c08-d670282102c8)
+#### 메인화면, 회사소개 및 아코디언 실행화면, 마이페이지화면
+![image](https://github.com/user-attachments/assets/6a3b1e3b-77e6-41e8-9f66-668392cdea81)
+#### DICOM업로드화면, 업로드후화면
+![image](https://github.com/user-attachments/assets/9666a3c6-aafe-4d69-927a-1cde7183dcbe)
+#### 환자검색화면
+![image](https://github.com/user-attachments/assets/26aee289-d07d-4903-9efd-b3e15a285eac)
+#### 진단화면, Heatmap실행화면
+![image](https://github.com/user-attachments/assets/bc43f873-3152-407b-a1d7-7e5907d1015c)
+![image](https://github.com/user-attachments/assets/b874bb57-f44d-476a-a797-f2c564627e63)
+
+
 ## 📚 주요 기능
 ### 1. Explainable AI 
 #### - Grad CAM
